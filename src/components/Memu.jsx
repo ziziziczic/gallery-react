@@ -1,17 +1,22 @@
 import React from 'react';
-import {Button,Box} from '@mui/material'
+import {Button,Stack} from '@mui/material'
 
 const menus = ['항공','숙소','투어&액티비티','여행준비','해외여행알리미']
 
+const direc = {
+    // md : 'column',
+    sm : 'row',
+}
+
 const Memu = (props) => {
     return(
-        <Box>
+        <Stack direction={direc} spacing={2}>
             {
                 menus.map((item,index)=>{
                     return <Button>{item}</Button>
                 })
             }
-        </Box>
+        </Stack>
     );
 }
 

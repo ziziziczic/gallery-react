@@ -44,11 +44,6 @@ function App() {
               <Box sx={boxStyle}></Box>
             </Container>
             <Switch>
-              <Route exact path="/">
-                  <Banner></Banner>
-                  <Box sx={{maxWidth : '1200px', margin : '0 auto'}}><h1>타임 핫딜</h1></Box>
-                  <Items items= {hotdeals}></Items>
-              </Route>
               <Route path="/best">
                 <div>best.</div>
               </Route>
@@ -63,6 +58,11 @@ function App() {
               </Route>
               <Route path="/Online">
                 <div>Online.</div>
+              </Route>
+              <Route path="/">
+                  <Banner></Banner>
+                  <Box sx={{maxWidth : '1200px', margin : '0 auto'}}><h1>타임 핫딜</h1></Box>
+                  <Items items= {hotdeals}></Items>
               </Route>
             </Switch>
           </div>);

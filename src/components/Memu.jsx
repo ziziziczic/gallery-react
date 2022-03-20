@@ -1,8 +1,9 @@
 import React from 'react';
 import {Button,Stack,Skeleton} from '@mui/material'
+import {Link} from 'react-router-dom';
 // import {makeStyles} from '@mui/material'
 
-const menus = ['베스트','현대','한국화','프리미엄','온라인']
+const menus = ['Best','Modern','KoreanPainting','Primium','Online']
 
 const direc = {
     // md : 'column',
@@ -40,7 +41,9 @@ const Memu = (props) => {
         <Stack direction={direc} spacing={2} sx={menuStyle}>
             {
                 menus.map((item,index)=>{
-                    return <Button sx={btnStyle}>{item}</Button>
+                    return <Link to={`/${item}`}>
+                            <Button sx={btnStyle} key={index}>{item}</Button>
+                        </Link>
                 })
             }
         </Stack>

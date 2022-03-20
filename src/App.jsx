@@ -1,7 +1,10 @@
-import './App.css';
-import Menu from './components/Memu';
+import React, {useState} from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
 import { Container , Box } from '@mui/material'
 import { makeStyles } from '@mui/styles';
+import './App.css';
+
+import Menu from './components/Memu';
 import Banner from './components/Banner';
 import Items from './components/Items';
 import hotDealItems from './assets/hot-deal';
@@ -33,18 +36,36 @@ const boxStyle = {
 
 function App() {
   const classes = useStyles();
-
+  const [hotdeals,setHotDeals] = useState(hotDealItems);
   return (
-          <>
+          <div>
             <Container sx={rootStyle}>
               <Menu className={classes.menuStyle} loading={loading}></Menu>
               <Box sx={boxStyle}></Box>
             </Container>
-              <Banner></Banner>
-
-              <Box sx={{maxWidth : '1200px', margin : '0 auto'}}><h1>타임 핫딜</h1></Box>
-              <Items items= {hotDealItems}></Items>
-          </>);
+            <Switch>
+              <Route exact path="/">
+                  <Banner></Banner>
+                  <Box sx={{maxWidth : '1200px', margin : '0 auto'}}><h1>타임 핫딜</h1></Box>
+                  <Items items= {hotdeals}></Items>
+              </Route>
+              <Route path="/best">
+                <div>best.</div>
+              </Route>
+              <Route path="/Modern">
+                <div>Modern.</div>
+              </Route>
+              <Route path="/KoreanPainting">
+                <div>KoreanPainting.</div>
+              </Route>
+              <Route path="/Primium">
+                <div>Primium.</div>
+              </Route>
+              <Route path="/Online">
+                <div>Online.</div>
+              </Route>
+            </Switch>
+          </div>);
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch , useHistory } from 'react-router-dom';
 import { Container , Box } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import './App.css';
@@ -7,6 +7,7 @@ import './App.css';
 import Menu from './components/Memu';
 import Banner from './components/Banner';
 import Items from './components/Items';
+import Detail from './components/Detail'
 import hotDealItems from './assets/hot-deal';
 
 let loading = false;
@@ -37,6 +38,7 @@ const boxStyle = {
 function App() {
   const classes = useStyles();
   const [hotdeals,setHotDeals] = useState(hotDealItems);
+  const history = useHistory();
   return (
           <div>
             <Container sx={rootStyle}>
@@ -45,19 +47,26 @@ function App() {
             </Container>
             <Switch>
               <Route path="/best">
-                <div>best.</div>
+                <div>
+                  best.
+                  <button onClick={()=>{history.goBack()}}>go back</button>
+                  <button onClick={()=>{history.push('/modern')}}>go modern</button>
+                </div>
               </Route>
-              <Route path="/Modern">
+              <Route path="/modern">
                 <div>Modern.</div>
               </Route>
-              <Route path="/KoreanPainting">
+              <Route path="/koreanpainting">
                 <div>KoreanPainting.</div>
               </Route>
-              <Route path="/Primium">
+              <Route path="/primium">
                 <div>Primium.</div>
               </Route>
-              <Route path="/Online">
+              <Route path="/online">
                 <div>Online.</div>
+              </Route>
+              <Route path="/detail/:id">
+                <Detail items={hotdeals}></Detail>
               </Route>
               <Route path="/">
                   <Banner></Banner>

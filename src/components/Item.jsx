@@ -1,5 +1,6 @@
 import React from 'react';
 import {makeStyles}from '@mui/styles'
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
     root :{
@@ -36,16 +37,19 @@ const useStyles = makeStyles({
 
 const Item = (props) => {
     const classes = useStyles();
-    const {title,author,price,src} = props.hotdeal;
+    const {id,title,author,price,src} = props.hotdeal;
     return(
-    <div className={classes.root}>
-        <div className={classes.imgContainer}>
-            <img src={src} alt='hot deal item'></img>
-        </div>
-        <p className={classes.title}>제목 : {title}</p>
-        <p className={classes.author}>작가 : {author}</p>
-        <p className={classes.price}>가격 : {price}</p>
-    </div>);
+        <Link to={`/detail/${id}`}>
+            <div className={classes.root}>
+                <div className={classes.imgContainer}>
+                    <img src={src} alt='hot deal item'></img>
+                </div>
+                <p className={classes.title}>제목 : {title}</p>
+                <p className={classes.author}>작가 : {author}</p>
+                <p className={classes.price}>가격 : {price}</p>
+            </div>
+        </Link>
+    );
 };
 
 export default Item;
